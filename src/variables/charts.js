@@ -1,18 +1,7 @@
-
-let chart1_2_options = {
+let chart_options = {
   maintainAspectRatio: false,
   legend: {
-    display: false
-  },
-  tooltips: {
-    backgroundColor: "#f5f5f5",
-    titleFontColor: "#333",
-    bodyFontColor: "#666",
-    bodySpacing: 4,
-    xPadding: 12,
-    mode: "nearest",
-    intersect: 0,
-    position: "nearest"
+    display: false,
   },
   responsive: true,
   scales: {
@@ -22,38 +11,58 @@ let chart1_2_options = {
         gridLines: {
           drawBorder: false,
           color: "rgba(29,140,248,0.0)",
-          zeroLineColor: "transparent"
-        }
-
-      }
+          zeroLineColor: "transparent",
+        },
+        ticks: {
+          suggestedMin: -750,
+          suggestedMax: 750,
+          padding: 20,
+          fontColor: "#9a9a9a",
+        },
+      },
     ],
     xAxes: [
       {
         barPercentage: 1.6,
         gridLines: {
           drawBorder: false,
-          color: "rgba(29,140,248,0.1)",
-          zeroLineColor: "transparent"
+          color: "transparent",
+          zeroLineColor: "transparent",
         },
         ticks: {
           padding: 20,
           fontColor: "#9a9a9a",
-          display:false
-        }
-      }
-    ]
-  }
+          display: false,
+        },
+      },
+    ],
+  },
 };
 
-let chartData = (data)=>({
-  data: canvas => {
+let chartData = (data, color) => ({
+  data: (canvas) => {
+    let _color = color ? "red" : "green";
+
     let ctx = canvas.getContext("2d");
+
+    let colors = {
+      green: {
+        color_1: "rgba(46, 204, 113,0.2)",
+        color_2: "rgba(46, 204, 113,0)",
+        color: "rgba(46, 204, 113,1)",
+      },
+      red: {
+        color_1: "rgba(231, 76, 60,0.2)",
+        color_2: "rgba(231, 76, 60,0)",
+        color: "rgba(231, 76, 60,1)",
+      },
+    };
 
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
-    gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
-    gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
-    gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
+    gradientStroke.addColorStop(1, colors[_color].color_1);
+    gradientStroke.addColorStop(0.4, colors[_color].color_2);
+    gradientStroke.addColorStop(0, colors[_color].color_2);
 
     return {
       labels: data,
@@ -61,26 +70,25 @@ let chartData = (data)=>({
         {
           fill: true,
           backgroundColor: gradientStroke,
-          borderColor: "#1f8ef1",
+          borderColor: colors[_color].color,
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          pointBackgroundColor: "#1f8ef1",
+          pointBackgroundColor: colors[_color].color,
           pointBorderColor: "rgba(255,255,255,0)",
-          pointHoverBackgroundColor: "#1f8ef1",
+          pointHoverBackgroundColor: colors[_color].color,
           pointBorderWidth: 20,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          data: data
-        }
-      ]
+          pointRadius: 1,
+          data: data,
+        },
+      ],
     };
   },
-  options: chart1_2_options
+  options: chart_options,
 });
 
-
 module.exports = {
-  chartData
+  chartData,
 };

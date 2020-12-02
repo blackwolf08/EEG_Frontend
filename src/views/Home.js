@@ -2,6 +2,8 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import { Card, CardBody, CardHeader, CardTitle, Col, Row } from "reactstrap";
 import { chartData } from "variables/charts.js";
+/*eslint-disable*/
+import { WEBSOCKET_URI, WEBSOCKET_URI_LOCAL } from "../constants";
 
 class Home extends React.Component {
   state = {
@@ -9,7 +11,7 @@ class Home extends React.Component {
   };
 
   connectSocket = async () => {
-    const socket = new WebSocket("ws://localhost:5000");
+    const socket = new WebSocket(WEBSOCKET_URI);
 
     socket.addEventListener("open", (event)=>  {
       console.log("Connected to the WS Server!");
@@ -21,9 +23,9 @@ class Home extends React.Component {
 
     socket.addEventListener("message",  ({data})=> {
       data = JSON.parse(data)
-      let {eeg_signal_list} = data
+      let {eeg_signal_list, extra_data:{is_epilepsy_detected}} = data
       this.setState({
-        data: chartData(eeg_signal_list).data
+        data: chartData(eeg_signal_list, is_epilepsy_detected).data
       })
     });
   };
