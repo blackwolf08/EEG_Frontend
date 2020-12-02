@@ -1,8 +1,7 @@
 {
-  "name": "black-dashboard-react",
+  "name": "eeg-app",
   "version": "1.1.0",
   "private": true,
-  "homepage": "https://demos.creative-tim.com/black-dashboard-react/#/admin/dashboard",
   "dependencies": {
     "@types/googlemaps": "3.39.3",
     "@types/markerclustererplus": "2.1.33",
@@ -30,9 +29,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "compile-scss": "node-sass src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.css",
-    "minify-sass": "node-sass src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.min.css --output-style compressed",
-    "map-sass": "node-sass src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.css --source-map true"
+    "compile-scss": "node-sass src/assets/scss/eeg-app.scss src/assets/css/eeg-app.css",
+    "minify-sass": "node-sass src/assets/scss/eeg-app.scss src/assets/css/eeg-app.min.css --output-style compressed",
+    "map-sass": "node-sass src/assets/scss/eeg-app.scss src/assets/css/eeg-app.css --source-map true"
   },
   "eslintConfig": {
     "extends": "react-app"
