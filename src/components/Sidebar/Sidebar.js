@@ -1,4 +1,3 @@
-
 /*eslint-disable*/
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
@@ -26,7 +25,7 @@ class Sidebar extends React.Component {
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(this.refs.sidebar, {
         suppressScrollX: true,
-        suppressScrollY: false
+        suppressScrollY: false,
       });
     }
   }
@@ -121,7 +120,6 @@ class Sidebar extends React.Component {
                 </li>
               );
             })}
-
           </Nav>
         </div>
       </div>
@@ -132,7 +130,7 @@ class Sidebar extends React.Component {
 Sidebar.defaultProps = {
   rtlActive: false,
   bgColor: "primary",
-  routes: [{}]
+  routes: [{}],
 };
 
 Sidebar.propTypes = {
@@ -143,8 +141,8 @@ Sidebar.propTypes = {
     innerLink: PropTypes.string,
     outterLink: PropTypes.string,
     text: PropTypes.node,
-    imgSrc: PropTypes.string
-  })
+    imgSrc: PropTypes.string,
+  }),
 };
 
 export default Sidebar;

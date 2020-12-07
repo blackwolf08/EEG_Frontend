@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 // javascript plugin used to create scrollbars on windows
@@ -20,7 +19,7 @@ class Home extends React.Component {
     this.state = {
       backgroundColor: "blue",
       sidebarOpened:
-        document.documentElement.className.indexOf("nav-open") !== -1
+        document.documentElement.className.indexOf("nav-open") !== -1,
     };
   }
   componentDidMount() {
@@ -59,9 +58,25 @@ class Home extends React.Component {
     document.documentElement.classList.toggle("nav-open");
     this.setState({ sidebarOpened: !this.state.sidebarOpened });
   };
-  getRoutes = routes => {
+  getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/") {
+      if (prop.layout === "/home") {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            component={prop.component}
+            key={key}
+          />
+        );
+      } else if (prop.layout === "/report") {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            component={prop.component}
+            key={key}
+          />
+        );
+      } else if (prop.layout === "/term-paper") {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -74,10 +89,10 @@ class Home extends React.Component {
       }
     });
   };
-  handleBgClick = color => {
+  handleBgClick = (color) => {
     this.setState({ backgroundColor: color });
   };
-  getBrandText = path => {
+  getBrandText = (path) => {
     for (let i = 0; i < routes.length; i++) {
       if (
         this.props.location.pathname.indexOf(
@@ -100,7 +115,7 @@ class Home extends React.Component {
             logo={{
               outterLink: "https://eeg.sunnydhama.com/",
               text: "EEG Epilepsy Detection",
-              imgSrc: logo
+              imgSrc: logo,
             }}
             toggleSidebar={this.toggleSidebar}
           />
@@ -117,12 +132,10 @@ class Home extends React.Component {
             />
             <Switch>
               {this.getRoutes(routes)}
-              <Redirect from="*" to="/"/>
+              <Redirect from="*" to="/" />
             </Switch>
-
           </div>
         </div>
-       
       </>
     );
   }
