@@ -7,7 +7,7 @@ import brainGif from "../assets/img/brain.gif";
 /*eslint-disable*/
 import { WEBSOCKET_URI, WEBSOCKET_URI_LOCAL } from "../constants";
 
-const socket = new WebSocket(WEBSOCKET_URI_LOCAL);
+const socket = new WebSocket(WEBSOCKET_URI);
 
 class Home extends React.Component {
   state = {
