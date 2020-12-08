@@ -25,10 +25,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "yarn install:clean",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && yarn install",
     "compile-scss": "node-sass src/assets/scss/eeg-app.scss src/assets/css/eeg-app.css",
     "minify-sass": "node-sass src/assets/scss/eeg-app.scss src/assets/css/eeg-app.min.css --output-style compressed",
     "map-sass": "node-sass src/assets/scss/eeg-app.scss src/assets/css/eeg-app.css --source-map true"
