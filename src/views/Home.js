@@ -7,7 +7,7 @@ import brainGif from "../assets/img/brain.gif";
 /*eslint-disable*/
 import { WEBSOCKET_URI, WEBSOCKET_URI_LOCAL } from "../constants";
 
-const socket = new WebSocket(WEBSOCKET_URI);
+const socket = new WebSocket(WEBSOCKET_URI_LOCAL);
 
 class Home extends React.Component {
   state = {
@@ -30,11 +30,10 @@ class Home extends React.Component {
         extra_data: { is_epilepsy_detected },
         person,
       } = data;
-      let scale = person == 1 ? 100 : 800;
-
-      this.setState({
-        data: chartData(eeg_signal_list, is_epilepsy_detected, scale).data,
-      });
+      let _data = chartData(eeg_signal_list, is_epilepsy_detected, person).data;
+      this.setState(() => ({
+        data: _data,
+      }));
     });
   };
 

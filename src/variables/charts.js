@@ -1,3 +1,5 @@
+let scale = 100;
+
 let chart_options = (scale) => ({
   maintainAspectRatio: false,
   legend: {
@@ -14,8 +16,8 @@ let chart_options = (scale) => ({
           zeroLineColor: "transparent",
         },
         ticks: {
-          suggestedMin: -700,
-          suggestedMax: 700,
+          suggestedMin: -scale,
+          suggestedMax: scale,
           padding: 20,
           fontColor: "#9a9a9a",
         },
@@ -39,7 +41,11 @@ let chart_options = (scale) => ({
   },
 });
 
-let chartData = (data, color, scale) => {
+let chartData = (data, color, person) => {
+  if (person) {
+    scale = person == 1 ? 100 : 800;
+  }
+  console.log(scale);
   let __options = chart_options(scale);
   return {
     data: (canvas) => {

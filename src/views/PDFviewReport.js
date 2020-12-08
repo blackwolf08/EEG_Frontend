@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 import { Card, CardBody, CardHeader, CardTitle, Col, Row } from "reactstrap";
 import { chartData } from "variables/charts.js";
 import brainGif from "../assets/img/brain.gif";
-import "./index.css";
+
 /*eslint-disable*/
 import { WEBSOCKET_URI, WEBSOCKET_URI_LOCAL } from "../constants";
 
