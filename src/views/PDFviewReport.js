@@ -1,11 +1,8 @@
 import React from "react";
-import { Line } from "react-chartjs-2";
-import { Card, CardBody, CardHeader, CardTitle, Col, Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import { chartData } from "variables/charts.js";
-import brainGif from "../assets/img/brain.gif";
-
 /*eslint-disable*/
-import { WEBSOCKET_URI, WEBSOCKET_URI_LOCAL } from "../constants";
+import { WEBSOCKET_URI_LOCAL } from "../constants";
 
 class Home extends React.Component {
   state = {

@@ -43,7 +43,7 @@ let chart_options = (scale) => ({
 
 let chartData = (data, color, person) => {
   if (person) {
-    scale = person == 1 ? 100 : 800;
+    scale = person === 1 ? 100 : 800;
   }
   console.log(scale);
   let __options = chart_options(scale);
